@@ -67,9 +67,9 @@ Public Class Form1
         Dim regKey As RegistryKey
         regKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", True)
         If Light = True Then
-            regKey.SetValue("SystemUsesLightTheme", 1, RegistryValueKind.DWord)
+            regKey.SetValue("AppsUseLightTheme", 1, RegistryValueKind.DWord) 'AppsUseLightTheme on > 10000; SystemUsesLightTheme on < 10000
         Else
-            regKey.SetValue("SystemUsesLightTheme", 0, RegistryValueKind.DWord)
+            regKey.SetValue("AppsUseLightTheme", 0, RegistryValueKind.DWord)
         End If
         regKey.Close()
     End Sub
