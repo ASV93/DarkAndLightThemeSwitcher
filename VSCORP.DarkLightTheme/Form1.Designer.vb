@@ -33,6 +33,10 @@ Partial Class Form1
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DarkToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LightToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DisableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -65,25 +69,25 @@ Partial Class Form1
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.AboutToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(108, 54)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(221, 98)
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(104, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(217, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'Timer1
@@ -99,6 +103,31 @@ Partial Class Form1
         Me.Label2.Size = New System.Drawing.Size(58, 13)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Unknown"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DarkToolStripMenuItem, Me.LightToolStripMenuItem, Me.DisableToolStripMenuItem})
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(220, 22)
+        Me.ToolStripMenuItem1.Text = "Force theme until next boot"
+        '
+        'DarkToolStripMenuItem
+        '
+        Me.DarkToolStripMenuItem.Name = "DarkToolStripMenuItem"
+        Me.DarkToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DarkToolStripMenuItem.Text = "Dark"
+        '
+        'LightToolStripMenuItem
+        '
+        Me.LightToolStripMenuItem.Name = "LightToolStripMenuItem"
+        Me.LightToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LightToolStripMenuItem.Text = "Light"
+        '
+        'DisableToolStripMenuItem
+        '
+        Me.DisableToolStripMenuItem.Name = "DisableToolStripMenuItem"
+        Me.DisableToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DisableToolStripMenuItem.Text = "Disable"
         '
         'Form1
         '
@@ -132,4 +161,8 @@ Partial Class Form1
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Label2 As Label
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents DarkToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LightToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DisableToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -25,6 +25,9 @@
 Imports Microsoft.Win32
 
 Public Class Form1
+
+    Dim DarkTheme As Boolean
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         NotifyIcon1.Dispose()
         End
@@ -43,11 +46,17 @@ Public Class Form1
         Hide()
         Timer1.Interval = 60000
         If Now.Hour >= 19 Or Now.Hour < 9 Then
-            Label2.Text = "Dark"
-            SetTheme(False)
+            If Not DarkTheme Then
+                Label2.Text = "Dark"
+                SetTheme(False)
+                DarkTheme = True
+            End If
         Else 'From 9:00 AM to 18:59 PM
-            Label2.Text = "Light"
-            SetTheme(True)
+            If DarkTheme Then
+                Label2.Text = "Light"
+                SetTheme(True)
+                DarkTheme = False
+            End If
         End If
     End Sub
 
@@ -57,6 +66,13 @@ Public Class Form1
             Dim DestFile As String = Environment.GetFolderPath(Environment.SpecialFolder.Startup) & "\DNLTS.exe"
             If (SrcFile = DestFile) = False Then
                 IO.File.Copy(SrcFile, DestFile, True)
+            End If
+            Dim regKey As RegistryKey
+            regKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", True)
+            If regKey.GetValue("AppsUseLightTheme", 1) = 0 Then
+                DarkTheme = True
+            Else
+                DarkTheme = False
             End If
         Catch ex As Exception
             MessageBox.Show("Critical Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -72,5 +88,24 @@ Public Class Form1
             regKey.SetValue("AppsUseLightTheme", 0, RegistryValueKind.DWord)
         End If
         regKey.Close()
+    End Sub
+
+    Private Sub DarkToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DarkToolStripMenuItem.Click
+        Timer1.Enabled = False
+        Label2.Text = "Dark"
+        SetTheme(False)
+        DarkTheme = True
+    End Sub
+
+    Private Sub LightToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LightToolStripMenuItem.Click
+        Timer1.Enabled = False
+        Label2.Text = "Light"
+        SetTheme(True)
+        DarkTheme = False
+    End Sub
+
+    Private Sub DisableToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DisableToolStripMenuItem.Click
+        Timer1.Interval = 2500
+        Timer1.Enabled = True
     End Sub
 End Class
